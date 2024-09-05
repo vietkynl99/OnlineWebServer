@@ -158,9 +158,11 @@ function loadData(data) {
   }
   if (data.sens1 || data.sens1 === 0) {
     document.getElementById('sensorSens1').value = data.sens1;
+    document.getElementById('sensorSens1Value').innerText = data.sens1;
   }
   if (data.sens2 || data.sens2 === 0) {
     document.getElementById('sensorSens2').value = data.sens2;
+    document.getElementById('sensorSens2Value').innerText = data.sens2;
   }
 }
 

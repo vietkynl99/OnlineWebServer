@@ -238,4 +238,4 @@ enableTimerCb.addEventListener('change', function () {
   document.getElementById('timeHyphen').style.display = enableTimerCb.checked ? 'inline' : 'none'
 })
 
-window.onload = loadConfiguration
+loadConfiguration()

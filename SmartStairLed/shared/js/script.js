@@ -140,12 +140,6 @@ function loadData(data) {
     document.getElementById('autoWaitTime').value = data.autoWaitTime;
     document.getElementById('autoWaitTimeValue').innerText = data.autoWaitTime;
   }
-  if (data.threshold1) {
-    document.getElementById('distanceValue1').innerText = data.threshold1;
-  }
-  if (data.threshold2) {
-    document.getElementById('distanceValue2').innerText = data.threshold2;
-  }
   if (data.enableTimer) {
     document.getElementById('enableTimer').checked = data.enableTimer;
     document.getElementById('enableTimer').dispatchEvent(new Event('change'));
@@ -155,6 +149,18 @@ function loadData(data) {
   }
   if (data.timerOffTime) {
     document.getElementById('timerOffTime').value = minToTime(data.timerOffTime);
+  }
+  if (data.threshold1) {
+    document.getElementById('threshold1').innerText = data.threshold1;
+  }
+  if (data.threshold2) {
+    document.getElementById('threshold2').innerText = data.threshold2;
+  }
+  if (data.sens1 || data.sens1 === 0) {
+    document.getElementById('sensorSens1').value = data.sens1;
+  }
+  if (data.sens2 || data.sens2 === 0) {
+    document.getElementById('sensorSens2').value = data.sens2;
   }
 }
 
@@ -174,9 +180,9 @@ function sendRequest(request, index) {
 
 function sendRequestSaveSensor(index) {
   const data = {
-    request: "save-sensor",
+    request: "saveSensitivity",
     index: index,
-    sensitivity: index == 0 ? document.getElementById('sensorSens1').value : document.getElementById('sensorSens2').value
+    value: index == 0 ? document.getElementById('sensorSens1').value : document.getElementById('sensorSens2').value
   }
   sendHttpRequest("/request", 'POST', data, null)
 }
